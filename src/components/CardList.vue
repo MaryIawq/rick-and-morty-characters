@@ -1,6 +1,6 @@
 <script setup>
 import CardComponent from "@/components/CardComponent.vue";
-import { ref, onMounted } from 'vue';
+import {ref, onMounted, watch} from 'vue';
 import axios from 'axios';
 
 const nameFilter = ref('');
@@ -41,6 +41,9 @@ const applyFilters = () => {
   currentPage.value = 1;
   fetchCharacters(currentPage.value, nameFilter.value, statusFilter.value);
 };
+
+watch(currentPage, () => goToPage(currentPage.value))
+
 </script>
 
 <template>
@@ -56,9 +59,16 @@ const applyFilters = () => {
       <button @click="applyFilters">Apply</button>
     </div>
     <div class="pagination">
-      <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Previous</button>
-      <span>Page {{ currentPage }} of {{ totalPages }}</span>
-      <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next</button>
+      <div class="pagination__buttons">
+        <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">Previous</button>
+        <span>Page {{ currentPage }} of {{ totalPages }}</span>
+        <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next</button>
+      </div>
+      <div class="pagination__select">
+        <select v-model="currentPage">
+          <option v-for="page in totalPages" :value="page">{{ page }}</option>
+        </select>
+      </div>
     </div>
     <div class="card__list">
       <CardComponent v-for="character in characters" :key="character.id" :character="character"></CardComponent>
