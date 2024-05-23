@@ -1,0 +1,118 @@
+@font-face {
+    font-family: 'Ubuntu' ;
+    src: url('public/fonts/Ubuntu-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ubuntu' ;
+    src: url('public/fonts/Ubuntu-Medium.woff2') format('woff2');
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Ubuntu' ;
+    src: url('public/fonts/Ubuntu-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+:root {
+    --background-color: #19191c;
+    --mid-gray-color: #2e2e31;
+    --light-gray-color: #424246;
+    --light-gray-color-1: #616167;
+    --light-gray-color-2: #77777e;
+    --text-color: #f1f1f6;
+    --text-dark-color: #bdbdc2;
+    --rick-blue:  #4491b6;
+    --portal-green: #048c04;
+    --alien-purple: #8A2BE2;
+    --plumbus-pink: #a61a61;;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+:where(ul, ol):where([class]) {
+    padding-left: 0;
+}
+body,
+:where(blockquote, figure):where([class]) {
+    margin: 0;
+}
+:where(
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  ul,
+  ol,
+  dl
+):where([class]) {
+    margin-block: 0;
+}
+:where(dd[class]) {
+    margin-left: 0;
+}
+:where(fieldset[class]) {
+    margin-left: 0;
+    padding: 0;
+    border: none;
+}
+:where(ul[class]) {
+    list-style: none;
+}
+p {
+    --paragraphMarginBottom: 24px;
+
+    margin-block: 0;
+}
+p:where(:not([class]):not(:last-child)) {
+    margin-bottom: var(--paragraphMarginBottom);
+}
+img {
+    display: block;
+    max-width: 100%;
+}
+input,
+textarea,
+select,
+button {
+    font: inherit;
+}
+html {
+    height: 100%;
+    scroll-behavior: smooth;
+}
+body {
+    min-height: 100%;
+    line-height: 1.5;
+}
+svg *[fill] {
+    fill: currentColor
+}
+svg *[stroke] {
+    stroke: currentColor
+}
+svg * {
+    transition-property: fill, stroke;
+}
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+h1, h2, h3, h4{
+    margin: 0;
+}
